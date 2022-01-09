@@ -25,17 +25,3 @@ BARs, though in practice there are a number of important limitations:
 
 - The resize must be explicitly requested by the driver, which the official NVidia linux
   kernel driver currently does not do. The patch in this repository address this part.
-
- ## Open issues
-
- - [ ] In its current state, the nvidia driver reports only 4GiB of usable BAR1 space with
- the following address allocation:
-
-```
-[  247.597395] nvidia 0000:01:00.0: BAR 1: assigned [mem 0x4800000000-0x4fffffffff 64bit pref]
-[  247.597428] nvidia 0000:01:00.0: BAR 3: assigned [mem 0x4400000000-0x4401ffffff 64bit pref]
-```
-
-This may be a nvidia driver bug.
-
-- [ ] Could we have a linux kernel patch to just do the allocation at probe time?
