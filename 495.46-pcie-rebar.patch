@@ -45,7 +45,7 @@
 +    pci_release_resource(pci_dev, NV_GPU_BAR3);
 +
 +    /* Save the current size, just in case things go wrong */
-+    old_size = fls(pci_resource_len(pci_dev, NV_GPU_BAR1)) >> 20;
++    old_size = pci_rebar_bytes_to_size(pci_resource_len(pci_dev, NV_GPU_BAR1));
 +
 +resize:
 +    /* Attempt to resize BAR1 to the largest supported size */
@@ -97,19 +97,3 @@
      NV_KMALLOC(nvl, sizeof(nv_linux_state_t));
      if (nvl == NULL)
      {
-@@ -470,6 +552,7 @@
-     nvl->gpu_wakeup_callback_needed = NV_TRUE;
-     INIT_LIST_HEAD(&nvl->open_files);
-
-+
-     for (i = 0, j = 0; i < NVRM_PCICFG_NUM_BARS && j < NV_GPU_NUM_BARS; i++)
-     {
-         if ((NV_PCI_RESOURCE_VALID(pci_dev, i)) &&
-@@ -480,6 +563,7 @@
-             nv->bars[j].cpu_address = NV_PCI_RESOURCE_START(pci_dev, i);
-             nv->bars[j].strapped_size = NV_PCI_RESOURCE_SIZE(pci_dev, i);
-             nv->bars[j].size = nv->bars[j].strapped_size;
-+            nv_printf(NV_DBG_ERRORS, "BAR (%d, %d) 0x%llx\n", i, j, nv->bars[j].size);
-             j++;
-         }
-     }
