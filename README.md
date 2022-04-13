@@ -25,3 +25,10 @@ BARs, though in practice there are a number of important limitations:
 
 - The resize must be explicitly requested by the driver, which the official NVidia linux
   kernel driver currently does not do. The patch in this repository address this part.
+
+## Requirements
+
+This is tested with:
+  - NVidia 495.46 Drivers
+  - Linux 5.16
+
