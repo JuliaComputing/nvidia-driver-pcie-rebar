@@ -5,6 +5,6 @@ nvidia-%:
 	sudo dkms uninstall -m nvidia -v $* --all || echo "dkms uninstall failed, probably not yet installed"
 	sudo dkms remove -m nvidia -v $* --all|| echo "dkms remove failed, probably not yet installed"
 	sudo dkms add -m nvidia -v $* || echo "dkms add failed, probably already added"
-	sudo dkms build -m nvidia -v $*
-	sudo dkms install -m nvidia -v $*
+	sudo dkms build -m nvidia -v $* --force
+	sudo dkms install -m nvidia -v $* --force
 
