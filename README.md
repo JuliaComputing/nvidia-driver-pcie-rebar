@@ -29,6 +29,18 @@ BARs, though in practice there are a number of important limitations:
 ## Requirements
 
 This is tested with:
-  - NVidia 495.46 Drivers
-  - Linux 5.16
+  - NVidia 495.46, NVidia 510.60.02 Drivers
+  - Linux 5.16, 5.15
+
+## Install
+
+For Ubuntu you will need to add the `nvidia-dkms-<version>` package.
+
+The full version should be then found via a `dkms status`
+
+To patch and reload run:
+
+```
+  make nvidia-<verison>
+```
 
